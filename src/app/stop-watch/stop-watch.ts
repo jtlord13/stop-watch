@@ -35,6 +35,15 @@ start(): void {
         }
         }
 
+@HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === '0x0039') {
+     
+      this.start();
+
+    }
+  }
+  
 
   stop(): void {
         if (this.isRunning && this.timerInterval) {
@@ -45,6 +54,8 @@ start(): void {
             this.solvedTimes.push(solvedTime);
         }
 } 
+
+  
 
 resetTime(): void {
   
