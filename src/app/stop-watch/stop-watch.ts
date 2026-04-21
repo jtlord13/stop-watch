@@ -1,6 +1,5 @@
 
-import { Component, signal } from '@angular/core';
-
+import { Component, signal, HostListener } from '@angular/core';
 
 export class StopWatchModule {}
 
@@ -12,6 +11,7 @@ export class StopWatchModule {}
 })
 export class StopWatch {
 
+
   elapsedTimeSignal = signal('00:00:00');
   startTime: number = 0;  
   elapsedTime: number = 0;
@@ -20,6 +20,7 @@ export class StopWatch {
   solvedTimes: string[] = []; 
   convertedTime: string = '';
   averageTime = signal('00:00:00');
+ 
  
 
 start(): void {      
@@ -35,15 +36,6 @@ start(): void {
         }
         }
 
-@HostListener('window:keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Shift') {
-     
-      this.start();
-
-    }
-  }
-  
 
   stop(): void {
         if (this.isRunning && this.timerInterval) {
@@ -52,10 +44,22 @@ start(): void {
             const solvedTime = this.getFormattedTime(this.elapsedTime);
             this.elapsedTimeSignal.set(solvedTime);
             this.solvedTimes.push(solvedTime);
+          
         }
 } 
 
+  @HostListener('window:keydown', ['$event'])
+       onKeyDown(event: KeyboardEvent) {
+    
+          if(!this.isRunning){
+            this.start();
+          } else {this.stop();}
+      
+    }
   
+    
+
+
 
 resetTime(): void {
   
@@ -109,4 +113,9 @@ calculateAverage(solvedTimes: string[]): void {
                 
 } 
       
+
+
+function start(): string {
+  throw new Error('Function not implemented.');
+}
 
