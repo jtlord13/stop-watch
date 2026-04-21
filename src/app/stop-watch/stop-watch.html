@@ -12,7 +12,7 @@
 
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f6f8;
+        background-color: black;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,8 +21,10 @@
     }
 
     .stopwatch-box {
-        background: #ffffff;
+        background: black;
         border-radius: 12px;
+        border-style: solid;
+        border-color:white; 
         padding: 30px;
         width: 260px;
         text-align: center;
@@ -33,13 +35,14 @@
         font-size: 2.5em;
         margin-bottom: 20px;
         font-weight: bold;
+        color:white;
     }
 
     li{
         list-style: none;
         font-size: 1em;
         margin: 5px 0;
-        color:black;
+        color:white;
     }
     button {
         padding: 10px 15px;
@@ -71,37 +74,42 @@
 
     .solvedTimeHistory {
         font-size: 20px;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    color:#e90303
+        text-align: center;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        color: #3498db;
 }
+
+
     
 
     .milkshake{
         margin-top: 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    width: 260px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    font-family: "Roboto", sans-serif;
-    align-items: center;
+        background: black;
+        border-radius: 12px;
+        border-style:solid;
+        border-color:white;
+        padding: 20px;
+        width: 260px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        font-family: "Roboto", sans-serif;
+        align-items: center;
     }
 
     .clear {
-        background-color: #3622e6;
+        background-color: #3498db;
         color: white;
         margin-top: 6px;
+        margin-bottom:10px;
     }
 
     .average-button{
         background-color: #fd8700;
         color: white;
-        margin-top: 4px;
+        
     }
    
     .average-time{
@@ -110,39 +118,64 @@
         font-weight: bold;
         font-size: 20px;
         margin-bottom: 6px;
+        color:white ;
        
     }
 
     .average {
         font-size: 20px;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    color:#e90303;
-    margin-top:6px;
-    margin-bottom:6px;
+        text-align: center;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        color:orange;
     }
+
+   h1 {
+  font-family: sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  /* Syncs color and glow at 1s total speed */
+  animation: rainbow-glow 6s infinite step-end;
+ 
+}
+
+@keyframes rainbow-glow {
+  0%   { color: red;  }
+  20%  { color: green;  }
+  40%  { color: yellow;  }
+  60%  { color: rgb(0, 68, 255);  }
+  80%  { color: orange;  }
+}
+ 
+
+
+  
+
+
 </style>
 </head>
 
 <body>
 
+<h1>The Greatest Cube Timer of All Time</h1>
+
+
+
 <div class="stopwatch-box">
     <div id="display" class="display">{{ elapsedTimeSignal() }}</div>
-   <button class="start" (click)="start()" (keydown.shift)="start()">Start</button>
-    <button class="stop" (click)="stop()">Stop</button>
+    <button class="start" (click)="start()" (keydown)="start()">Start</button>
+    <button class="stop" (click)="stop()" (keydown)="stop()">Stop</button>
     <button class="reset" (click)="resetTime()">Reset</button>
 </div>
 
 <div class="milkshake">
-    <div class="solvedTimeHistory"> History
-        
+    <div class="solvedTimeHistory"> History 
         @for(solvedTime of solvedTimes; track $index) {
                 <li>{{ solvedTime }}</li>
     } 
     </div>
 
-    <button class="clear" (click)="clearHistory()">Clear History</button>   
+    <button class="clear" (click)="clearHistory()">Clear</button>   
 
     <div class="average">Average Time</div>
     <div class="average-time">{{averageTime()}}</div>
