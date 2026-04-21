@@ -37,7 +37,7 @@ start(): void {
 
 @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    if (event.key === '0x0039') {
+    if (event.key === 'Shift') {
      
       this.start();
 
