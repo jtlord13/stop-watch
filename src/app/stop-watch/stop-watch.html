@@ -129,7 +129,7 @@
 
 <div class="stopwatch-box">
     <div id="display" class="display">{{ elapsedTimeSignal() }}</div>
-    <button class="start" (click)="start()">Start</button>
+   <button class="start" (click)="start()" (keydown.shift)="start()">Start</button>
     <button class="stop" (click)="stop()">Stop</button>
     <button class="reset" (click)="resetTime()">Reset</button>
 </div>
