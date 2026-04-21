@@ -48,14 +48,15 @@ start(): void {
         }
 } 
 
-  @HostListener('window:keydown', ['$event'])
-       onKeyDown(event: KeyboardEvent) {
+ @HostListener('window:keyup', ['$event'])
+       onKeyUp(event: KeyboardEvent) {
     
           if(!this.isRunning){
             this.start();
           } else {this.stop();}
       
     }
+  
   
     
 
